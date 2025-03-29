@@ -7,7 +7,6 @@ import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
 import prettier from 'eslint-plugin-prettier'
-import pluginJest from 'eslint-plugin-jest'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -42,21 +41,6 @@ export default [
       'plugin:react-hooks/recommended'
     )
   ),
-  {
-    // update this to match your test files
-    files: ['**/*.spec.js', '**/*.test.js'],
-    plugins: { jest: pluginJest },
-    languageOptions: {
-      globals: pluginJest.environments.globals.globals,
-    },
-    rules: {
-      'jest/no-disabled-tests': 'warn',
-      'jest/no-focused-tests': 'error',
-      'jest/no-identical-title': 'error',
-      'jest/prefer-to-have-length': 'warn',
-      'jest/valid-expect': 'error',
-    },
-  },
   {
     plugins: {
       'jsx-a11y': fixupPluginRules(jsxA11Y),
